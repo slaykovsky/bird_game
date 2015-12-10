@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  * Created by slaykale on 09/12/15.
  */
 public class AssetLoader {
-    public static Sound dead;
+    public static Sound dead, coin, flap;
 
     public static Texture texture;
     public static TextureRegion background;
@@ -27,6 +27,8 @@ public class AssetLoader {
 
     public static void load() {
         dead = Gdx.audio.newSound(Gdx.files.internal("android/assets/dead.wav"));
+        coin = Gdx.audio.newSound(Gdx.files.internal("android/assets/coin.wav"));
+        flap = Gdx.audio.newSound(Gdx.files.internal("android/assets/flap.wav"));
 
         texture = new Texture(Gdx.files.internal("android/assets/texture.png"));
         texture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
@@ -60,6 +62,9 @@ public class AssetLoader {
 
     public static void dispose() {
         texture.dispose();
+        dead.dispose();
+        coin.dispose();
+        flap.dispose();
     }
 
 }
