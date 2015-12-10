@@ -29,7 +29,9 @@ public class AssetLoader {
 
     public static void load() {
         font = new BitmapFont(Gdx.files.internal("android/assets/text.fnt"));
+        font.getData().setScale(.25f, -.25f);
         shadow = new BitmapFont(Gdx.files.internal("android/assets/shadow.fnt"));
+        shadow.getData().setScale(.25f, -.25f);
         dead = Gdx.audio.newSound(Gdx.files.internal("android/assets/dead.wav"));
         coin = Gdx.audio.newSound(Gdx.files.internal("android/assets/coin.wav"));
         flap = Gdx.audio.newSound(Gdx.files.internal("android/assets/flap.wav"));

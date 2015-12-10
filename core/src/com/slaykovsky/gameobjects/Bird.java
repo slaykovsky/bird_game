@@ -37,6 +37,11 @@ public class Bird {
             this.velocity.y = 200;
         }
 
+        if (this.position.y < -13) {
+            this.position.y = -13;
+            this.velocity.y = 0;
+        }
+
         this.position.add(this.velocity.cpy().scl(delta));
         this.circle.set(this.position.x + 9, this.position.y + 6, 6.5f);
 

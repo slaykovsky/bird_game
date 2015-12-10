@@ -17,10 +17,13 @@ public class GameWorld {
     private ScrollHandler scrollHandler;
     private Rectangle ground;
 
+    private int score;
+
     public GameWorld(int midPointY) {
         this.bird = new Bird(33, midPointY - 5, 17, 12);
-        this.scrollHandler = new ScrollHandler(midPointY + 66);
+        this.scrollHandler = new ScrollHandler(this, midPointY + 66);
         this.ground = new Rectangle(0, midPointY + 66, 136, 11);
+        this.score = 0;
     }
 
     public void update(float delta) {
@@ -50,5 +53,13 @@ public class GameWorld {
 
     public ScrollHandler getScrollHandler() {
         return this.scrollHandler;
+    }
+
+    public int getScore() {
+        return this.score;
+    }
+
+    public void addScore(int increment) {
+        this.score += increment;
     }
 }

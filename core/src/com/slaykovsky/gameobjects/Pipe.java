@@ -19,6 +19,7 @@ public class Pipe extends Scrollable {
     private static final int SKULL_HEIGHT = 11;
 
     private float groundY;
+    private boolean scored;
 
     public Pipe(float x, float y, int width, int height, float scrollSpeed, float groundY) {
         super(x, y, width, height, scrollSpeed);
@@ -29,6 +30,7 @@ public class Pipe extends Scrollable {
         this.barUp = new Rectangle();
 
         this.groundY = groundY;
+        this.scored = false;
     }
 
     @Override
@@ -48,6 +50,7 @@ public class Pipe extends Scrollable {
     @Override
     public void reset(float x) {
         super.reset(x);
+        this.scored = false;
         this.height = random.nextInt(90) + 15;
     }
 
@@ -70,10 +73,18 @@ public class Pipe extends Scrollable {
     public boolean collides(Bird bird) {
         if (this.position.x < bird.getWidth() + bird.getX()) {
             return (Intersector.overlaps(bird.getCircle(), this.barUp) ||
-            Intersector.overlaps(bird.getCircle(), this.barDown) ||
-            Intersector.overlaps(bird.getCircle(), this.skullUp) ||
-            Intersector.overlaps(bird.getCircle(), this.skullDown));
+                    Intersector.overlaps(bird.getCircle(), this.barDown) ||
+                    Intersector.overlaps(bird.getCircle(), this.skullUp) ||
+                    Intersector.overlaps(bird.getCircle(), this.skullDown));
         }
         return false;
+    }
+
+    public boolean isScored() {
+        return scored;
+    }
+
+    public void setScored(boolean scored) {
+        this.scored = scored;
     }
 }

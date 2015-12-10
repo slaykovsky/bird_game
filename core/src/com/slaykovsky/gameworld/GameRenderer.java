@@ -161,6 +161,10 @@ public class GameRenderer {
                     this.bird.getWidth() / 2.0f, this.bird.getHeight() / 2.0f ,
                     this.bird.getWidth(), this.bird.getHeight(), 1, 1, this.bird.getRotation());
         }
+
+        String score = Integer.toString(this.gameWorld.getScore());
+        AssetLoader.shadow.draw(this.spriteBatch, score, (136 / 2) - (3 * score.length()), 12);
+        AssetLoader.font.draw(this.spriteBatch, score, (136 / 2) - (3 * score.length()) - 1, 11);
         this.spriteBatch.end();
 
     }

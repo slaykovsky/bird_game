@@ -1,8 +1,10 @@
 package com.slaykovsky.com.slaykovsky.birdhelpers;
 
+import com.badlogic.gdx.Game;
 import com.slaykovsky.gameobjects.Bird;
 import com.slaykovsky.gameobjects.Grass;
 import com.slaykovsky.gameobjects.Pipe;
+import com.slaykovsky.gameworld.GameWorld;
 
 /**
  * Created by slaykale on 10/12/15.
@@ -11,10 +13,14 @@ public class ScrollHandler {
     private Grass frontGrass, backGrass;
     private Pipe pipe1, pipe2, pipe3;
 
-    public static final int SCROLL_SPEED = -59;
-    public static final int PIPE_GAP = 49;
+    private GameWorld gameWorld;
 
-    public ScrollHandler(float y) {
+    private static final int SCROLL_SPEED = -59;
+    private static final int PIPE_GAP = 49;
+
+
+    public ScrollHandler(GameWorld gameWorld, float y) {
+        this.gameWorld = gameWorld;
         this.frontGrass = new Grass(0, y, 143, 11, SCROLL_SPEED);
         this.backGrass = new Grass(this.frontGrass.getTailX(), y, 143, 11, SCROLL_SPEED);
 
@@ -54,9 +60,26 @@ public class ScrollHandler {
     }
 
     public boolean collides(Bird bird) {
+        if (!this.pipe1.isScored() &&
+                this.pipe1.getX() + (this.pipe1.getWidth() / 2) < bird.getX() + bird.getWidth()) {
+            this.gameWorld.addScore(1);
+            this.pipe1.setScored(true);
+            AssetLoader.coin.play();
+        } else if (!this.pipe2.isScored() &&
+                this.pipe2.getX() + (this.pipe2.getWidth() / 2) < bird.getX() + bird.getWidth()) {
+            this.gameWorld.addScore(1);
+            this.pipe2.setScored(true);
+            AssetLoader.coin.play();
+        } else if (!this.pipe3.isScored() &&
+                this.pipe3.getX() + (this.pipe3.getWidth() / 2) < bird.getX() + bird.getWidth()) {
+            this.gameWorld.addScore(1);
+            this.pipe3.setScored(true);
+            AssetLoader.coin.play();
+        }
+
         return (this.pipe1.collides(bird) ||
-            this.pipe2.collides(bird) ||
-            this.pipe3.collides(bird));
+                this.pipe2.collides(bird) ||
+                this.pipe3.collides(bird));
     }
 
     public Grass getFrontGrass() {
