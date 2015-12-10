@@ -2,6 +2,7 @@ package com.slaykovsky.gameobjects;
 
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
+import com.slaykovsky.com.slaykovsky.birdhelpers.AssetLoader;
 
 /**
  * Created by slaykale on 09/12/15.
@@ -15,6 +16,8 @@ public class Bird {
     private int width;
     private int height;
 
+    private boolean isAlive;
+
     private Circle circle;
 
     public Bird(float x, float y, int width, int height) {
@@ -24,6 +27,7 @@ public class Bird {
         this.velocity = new Vector2(0, 0);
         this.acceleration = new Vector2(0, 460);
         this.circle = new Circle();
+        this.isAlive = true;
     }
 
     public void update(float delta) {
@@ -44,7 +48,7 @@ public class Bird {
             }
         }
 
-        if (this.isFalling()) {
+        if (this.isFalling() || !this.isAlive) {
             this.rotation += 480 * delta;
 
             if (this.rotation > 90) {
@@ -58,11 +62,14 @@ public class Bird {
     }
 
     public boolean shouldntFlap() {
-        return this.velocity.y > 70;
+        return this.velocity.y > 70 || !this.isAlive;
     }
 
     public void onClick() {
-        this.velocity.y -= 140;
+        if (this.isAlive) {
+            AssetLoader.flap.play();
+            this.velocity.y -= 140;
+        }
     }
 
     public float getX() {
@@ -87,5 +94,18 @@ public class Bird {
 
     public Circle getCircle() {
         return this.circle;
+    }
+
+    public void die() {
+        this.isAlive = false;
+        this.velocity.y = 0;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public void decelerate() {
+        this.acceleration.y = 0;
     }
 }
