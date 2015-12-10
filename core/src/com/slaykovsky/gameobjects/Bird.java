@@ -2,7 +2,7 @@ package com.slaykovsky.gameobjects;
 
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
-import com.slaykovsky.com.slaykovsky.birdhelpers.AssetLoader;
+import com.slaykovsky.birdhelpers.AssetLoader;
 
 /**
  * Created by slaykale on 09/12/15.
@@ -112,5 +112,15 @@ public class Bird {
 
     public void decelerate() {
         this.acceleration.y = 0;
+    }
+
+    public void onRestart(int y) {
+        this.rotation = 0;
+        this.position.y = y;
+        this.velocity.x = 0;
+        this.velocity.y = 0;
+        this.acceleration.x = 0;
+        this.acceleration.y = 460;
+        this.isAlive = true;
     }
 }

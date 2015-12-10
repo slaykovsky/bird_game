@@ -1,6 +1,5 @@
-package com.slaykovsky.com.slaykovsky.birdhelpers;
+package com.slaykovsky.birdhelpers;
 
-import com.badlogic.gdx.Game;
 import com.slaykovsky.gameobjects.Bird;
 import com.slaykovsky.gameobjects.Grass;
 import com.slaykovsky.gameobjects.Pipe;
@@ -44,7 +43,7 @@ public class ScrollHandler {
             this.pipe3.reset(this.pipe2.getTailX() + PIPE_GAP);
         }
 
-        if (this.frontGrass.isScrolledLeft()){
+        if (this.frontGrass.isScrolledLeft()) {
             this.frontGrass.reset(this.backGrass.getTailX());
         } else if (this.backGrass.isScrolledLeft()) {
             this.backGrass.reset(this.frontGrass.getTailX());
@@ -80,6 +79,14 @@ public class ScrollHandler {
         return (this.pipe1.collides(bird) ||
                 this.pipe2.collides(bird) ||
                 this.pipe3.collides(bird));
+    }
+
+    public void onRestart() {
+        this.frontGrass.onRestart(0, SCROLL_SPEED);
+        this.backGrass.onRestart(this.frontGrass.getTailX(), SCROLL_SPEED);
+        this.pipe1.onRestart(210, SCROLL_SPEED);
+        this.pipe2.onRestart(this.pipe1.getTailX() + PIPE_GAP, SCROLL_SPEED);
+        this.pipe3.onRestart(this.pipe2.getTailX() + PIPE_GAP, SCROLL_SPEED);
     }
 
     public Grass getFrontGrass() {

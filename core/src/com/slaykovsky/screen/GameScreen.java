@@ -2,8 +2,7 @@ package com.slaykovsky.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
-import com.slaykovsky.com.slaykovsky.birdhelpers.InputHandler;
+import com.slaykovsky.birdhelpers.InputHandler;
 import com.slaykovsky.gameworld.GameRenderer;
 import com.slaykovsky.gameworld.GameWorld;
 
@@ -27,7 +26,7 @@ public class GameScreen implements Screen {
 
         this.gameRenderer = new GameRenderer(this.gameWorld, (int) gameHeight, midPointY);
 
-        Gdx.input.setInputProcessor(new InputHandler(this.gameWorld.getBird()));
+        Gdx.input.setInputProcessor(new InputHandler(this.gameWorld));
     }
 
     @Override

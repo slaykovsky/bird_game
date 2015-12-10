@@ -1,6 +1,7 @@
-package com.slaykovsky.com.slaykovsky.birdhelpers;
+package com.slaykovsky.birdhelpers;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -26,6 +27,8 @@ public class AssetLoader {
     public static TextureRegion skullUp;
     public static TextureRegion skullDown;
     public static TextureRegion bar;
+
+    public static Preferences preferences;
 
     public static void load() {
         font = new BitmapFont(Gdx.files.internal("android/assets/text.fnt"));
@@ -64,6 +67,20 @@ public class AssetLoader {
 
         bar = new TextureRegion(texture, 136, 16, 22, 3);
         bar.flip(false, true);
+
+        preferences = Gdx.app.getPreferences("BirdGame");
+        if (!preferences.contains("highScore")) {
+            preferences.putInteger("highScore", 0);
+        }
+    }
+
+    public static void setHighScore(int highScore) {
+        preferences.putInteger("highScore", highScore);
+        preferences.flush();
+    }
+
+    public static int getHighScore() {
+        return preferences.getInteger("highScore");
     }
 
     public static void dispose() {

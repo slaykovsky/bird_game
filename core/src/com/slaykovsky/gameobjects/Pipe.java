@@ -54,6 +54,11 @@ public class Pipe extends Scrollable {
         this.height = random.nextInt(90) + 15;
     }
 
+    public void onRestart(float x, float scrollSpeed) {
+        this.velocity.x = scrollSpeed;
+        reset(x);
+    }
+
     public Rectangle getSkullDown() {
         return this.skullDown;
     }

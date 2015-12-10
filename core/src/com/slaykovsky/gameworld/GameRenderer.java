@@ -7,8 +7,8 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.slaykovsky.com.slaykovsky.birdhelpers.AssetLoader;
-import com.slaykovsky.com.slaykovsky.birdhelpers.ScrollHandler;
+import com.slaykovsky.birdhelpers.AssetLoader;
+import com.slaykovsky.birdhelpers.ScrollHandler;
 import com.slaykovsky.gameobjects.Bird;
 import com.slaykovsky.gameobjects.Grass;
 import com.slaykovsky.gameobjects.Pipe;
@@ -162,9 +162,40 @@ public class GameRenderer {
                     this.bird.getWidth(), this.bird.getHeight(), 1, 1, this.bird.getRotation());
         }
 
+        if (this.gameWorld.isReady()) {
+            AssetLoader.shadow.draw(this.spriteBatch, "Touch Me", (136 / 2) - 42, 76);
+            AssetLoader.font.draw(this.spriteBatch, "Touch Me", (136 / 2) - 41, 75);
+        } else if (this.gameWorld.isGameOver() || this.gameWorld.isHighScore()) {
+            if (this.gameWorld.isGameOver()) {
+                AssetLoader.shadow.draw(this.spriteBatch, "Game Over", 25, 56);
+                AssetLoader.font.draw(this.spriteBatch, "Game Over", 24, 55);
+
+                AssetLoader.shadow.draw(this.spriteBatch, "High Score:", 23, 106);
+                AssetLoader.font.draw(this.spriteBatch, "High Score:", 22, 105);
+
+                String highScore = Integer.toString(AssetLoader.getHighScore());
+
+                AssetLoader.shadow.draw(this.spriteBatch, highScore, (136 / 2)
+                        - (3 * highScore.length()), 128);
+                AssetLoader.font.draw(this.spriteBatch, highScore, (136 / 2)
+                        - (3 * highScore.length() - 1), 127);
+            } else {
+                AssetLoader.shadow.draw(this.spriteBatch, "High Score!", 19, 56);
+                AssetLoader.font.draw(this.spriteBatch, "High Score!", 18, 55);
+            }
+
+            AssetLoader.shadow.draw(this.spriteBatch, "Try again?", 23, 76);
+            AssetLoader.font.draw(this.spriteBatch, "Try again?", 24, 75);
+
+            String score = Integer.toString(this.gameWorld.getScore());
+            AssetLoader.shadow.draw(this.spriteBatch, score, (136 / 2) - (3 * score.length()), 12);
+            AssetLoader.font.draw(this.spriteBatch, score, (136 / 2) - (3 * score.length()) - 1, 11);
+        }
+
         String score = Integer.toString(this.gameWorld.getScore());
         AssetLoader.shadow.draw(this.spriteBatch, score, (136 / 2) - (3 * score.length()), 12);
         AssetLoader.font.draw(this.spriteBatch, score, (136 / 2) - (3 * score.length()) - 1, 11);
+
         this.spriteBatch.end();
 
     }
