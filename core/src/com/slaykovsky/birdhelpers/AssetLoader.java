@@ -1,6 +1,7 @@
 package com.slaykovsky.birdhelpers;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
@@ -31,15 +32,15 @@ public class AssetLoader {
     public static Preferences preferences;
 
     public static void load() {
-        font = new BitmapFont(Gdx.files.internal("android/assets/text.fnt"));
+        font = new BitmapFont(Gdx.files.internal("text.fnt"));
         font.getData().setScale(.25f, -.25f);
-        shadow = new BitmapFont(Gdx.files.internal("android/assets/shadow.fnt"));
+        shadow = new BitmapFont(Gdx.files.internal("shadow.fnt"));
         shadow.getData().setScale(.25f, -.25f);
-        dead = Gdx.audio.newSound(Gdx.files.internal("android/assets/dead.wav"));
-        coin = Gdx.audio.newSound(Gdx.files.internal("android/assets/coin.wav"));
-        flap = Gdx.audio.newSound(Gdx.files.internal("android/assets/flap.wav"));
+        dead = Gdx.audio.newSound(Gdx.files.internal("dead.wav"));
+        coin = Gdx.audio.newSound(Gdx.files.internal("coin.wav"));
+        flap = Gdx.audio.newSound(Gdx.files.internal("flap.wav"));
 
-        texture = new Texture(Gdx.files.internal("android/assets/texture.png"));
+        texture = new Texture(Gdx.files.internal("texture.png"));
         texture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
 
         background = new TextureRegion(texture, 0, 0, 136, 43);
