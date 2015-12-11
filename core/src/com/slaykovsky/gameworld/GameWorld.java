@@ -71,7 +71,7 @@ public class GameWorld {
             this.gameState = GameState.GAMEOVER;
 
             if (this.score > AssetLoader.preferences.getInteger("highScore")) {
-                AssetLoader.preferences.putInteger("highScore", this.score);
+                AssetLoader.setHighScore(this.score);
                 this.gameState = GameState.HIGHSCORE;
             }
         }
