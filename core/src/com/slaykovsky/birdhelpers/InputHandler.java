@@ -1,5 +1,6 @@
 package com.slaykovsky.birdhelpers;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.slaykovsky.gameobjects.Bird;
 import com.slaykovsky.gameworld.GameWorld;
@@ -37,6 +38,7 @@ public class InputHandler implements InputProcessor {
             this.gameWorld.start();
         }
 
+        Gdx.input.vibrate(20);
         this.bird.onClick();
 
         if (this.gameWorld.isGameOver() || this.gameWorld.isHighScore()) {
