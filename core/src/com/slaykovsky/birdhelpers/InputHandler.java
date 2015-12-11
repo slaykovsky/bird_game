@@ -39,7 +39,7 @@ public class InputHandler implements InputProcessor {
         }
 
         Gdx.input.vibrate(20);
-        this.bird.onClick();
+        this.bird.onTap();
 
         if (this.gameWorld.isGameOver() || this.gameWorld.isHighScore()) {
             this.gameWorld.restart();

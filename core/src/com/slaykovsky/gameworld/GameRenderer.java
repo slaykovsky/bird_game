@@ -150,7 +150,7 @@ public class GameRenderer {
         this.spriteBatch.enableBlending();
         this.drawSkulls();
         // Bird
-        if (this.bird.shouldntFlap()) {
+        if (this.bird.shouldNotFlap()) {
             this.spriteBatch.draw(this.birdMid, this.bird.getX(), this.bird.getY(),
                     this.bird.getWidth() / 2.0f, this.bird.getHeight() / 2.0f,
                     this.bird.getWidth(), this.bird.getHeight(),

@@ -66,11 +66,11 @@ public class Bird {
         return this.velocity.y > 110;
     }
 
-    public boolean shouldntFlap() {
+    public boolean shouldNotFlap() {
         return this.velocity.y > 70 || !this.isAlive;
     }
 
-    public void onClick() {
+    public void onTap() {
         if (this.isAlive) {
             AssetLoader.flap.play();
             this.velocity.y -= 140;

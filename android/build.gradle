@@ -1,5 +1,11 @@
 android {
     signingConfigs {
+        sofutorika {
+            keyAlias 'Sofutorika'
+            keyPassword System.getenv("KEYPWD")
+            storeFile file(KEY_STORE_PATH)
+            storePassword System.getenv("STOREPWD")
+        }
     }
     buildToolsVersion '23.0.2'
     compileSdkVersion 19
@@ -21,6 +27,15 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
+    }
+    buildTypes {
+        debug {
+            debuggable true
+            signingConfig signingConfigs.sofutorika
+        }
+        release {
+            signingConfig signingConfigs.sofutorika
+        }
     }
 }
 // called every time gradle gets executed, takes the native dependencies of
