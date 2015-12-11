@@ -119,5 +119,4 @@ idea {
     }
 }
 dependencies {
-    compile 'com.google.android.gms:play-services-ads:8.3.0'
 }
