@@ -5,9 +5,6 @@ import com.badlogic.gdx.math.Rectangle;
 
 import java.util.Random;
 
-/**
- * Created by slaykale on 10/12/15.
- */
 public class Pipe extends Scrollable {
 
     private Random random;

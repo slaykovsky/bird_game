@@ -12,11 +12,12 @@ import com.slaykovsky.birdhelpers.ScrollHandler;
 import com.slaykovsky.gameobjects.Bird;
 import com.slaykovsky.gameobjects.Grass;
 import com.slaykovsky.gameobjects.Pipe;
+import com.slaykovsky.interfaces.GameRendererInterface;
 
 /**
  * Created by slaykale on 09/12/15.
  */
-public class GameRenderer {
+public class GameRenderer implements GameRendererInterface {
 
     private GameWorld gameWorld;
     private OrthographicCamera orthographicCamera;
@@ -46,7 +47,7 @@ public class GameRenderer {
         this.midPointY = midPointY;
 
         this.orthographicCamera = new OrthographicCamera();
-        this.orthographicCamera.setToOrtho(true, 136, this.gameHeight);
+        this.orthographicCamera.setToOrtho(true, WIDTH, this.gameHeight);
 
         this.spriteBatch = new SpriteBatch();
 
@@ -129,7 +130,7 @@ public class GameRenderer {
         this.shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
         // Background
-        this.shapeRenderer.setColor(55 / 255.0f, 80 / 255.0f, 100 / 255.0f, 1);
+        this.shapeRenderer.setColor(156 / 255.0f, 196 / 255.0f, 228 / 255.0f, 1);
         this.shapeRenderer.rect(0, 0, 136, this.midPointY + 66);
         // Grass
         this.shapeRenderer.setColor(111 / 255.0f, 186 / 255.0f, 45 / 255.0f, 1);

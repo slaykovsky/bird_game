@@ -4,22 +4,17 @@ import com.slaykovsky.gameobjects.Bird;
 import com.slaykovsky.gameobjects.Grass;
 import com.slaykovsky.gameobjects.Pipe;
 import com.slaykovsky.gameworld.GameWorld;
+import com.slaykovsky.interfaces.ScrollHandlerInterface;
 
-/**
- * Created by slaykale on 10/12/15.
- */
-public class ScrollHandler {
+public class ScrollHandler implements ScrollHandlerInterface {
     private Grass frontGrass, backGrass;
     private Pipe pipe1, pipe2, pipe3;
 
     private GameWorld gameWorld;
 
-    private static final int SCROLL_SPEED = -59;
-    private static final int PIPE_GAP = 49;
-
-
     public ScrollHandler(GameWorld gameWorld, float y) {
         this.gameWorld = gameWorld;
+
         this.frontGrass = new Grass(0, y, 143, 11, SCROLL_SPEED);
         this.backGrass = new Grass(this.frontGrass.getTailX(), y, 143, 11, SCROLL_SPEED);
 
@@ -48,6 +43,7 @@ public class ScrollHandler {
         } else if (this.backGrass.isScrolledLeft()) {
             this.backGrass.reset(this.frontGrass.getTailX());
         }
+
     }
 
     public void stop() {

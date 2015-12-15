@@ -4,9 +4,6 @@ import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Vector2;
 import com.slaykovsky.birdhelpers.AssetLoader;
 
-/**
- * Created by slaykale on 09/12/15.
- */
 public class Bird {
     private Vector2 position;
     private Vector2 velocity;

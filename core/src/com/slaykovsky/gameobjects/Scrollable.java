@@ -1,11 +1,9 @@
 package com.slaykovsky.gameobjects;
 
 import com.badlogic.gdx.math.Vector2;
+import com.slaykovsky.interfaces.ScrollableInterface;
 
-/**
- * Created by slaykale on 10/12/15.
- */
-public class Scrollable {
+public class Scrollable implements ScrollableInterface {
     protected Vector2 position;
     protected Vector2 velocity;
     protected int width;

@@ -6,10 +6,6 @@ import com.slaykovsky.birdhelpers.AssetLoader;
 import com.slaykovsky.birdhelpers.ScrollHandler;
 import com.slaykovsky.gameobjects.Bird;
 
-
-/**
- * Created by slaykale on 09/12/15.
- */
 public class GameWorld {
 
     private Bird bird;
@@ -116,4 +112,5 @@ public class GameWorld {
     public boolean isHighScore() {
         return this.gameState.equals(GameState.HIGHSCORE);
     }
+
 }

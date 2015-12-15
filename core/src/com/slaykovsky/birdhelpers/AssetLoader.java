@@ -1,7 +1,6 @@
 package com.slaykovsky.birdhelpers;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
@@ -9,9 +8,6 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-/**
- * Created by slaykale on 09/12/15.
- */
 public class AssetLoader {
     public static BitmapFont font, shadow;
     public static Sound dead, coin, flap;

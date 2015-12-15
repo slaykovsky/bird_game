@@ -6,9 +6,6 @@ import com.slaykovsky.birdhelpers.InputHandler;
 import com.slaykovsky.gameworld.GameRenderer;
 import com.slaykovsky.gameworld.GameWorld;
 
-/**
- * Created by slaykale on 09/12/15.
- */
 public class GameScreen implements Screen {
     private GameWorld gameWorld;
     private GameRenderer gameRenderer;
@@ -31,7 +28,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
-        Gdx.app.log("GameScreen", "Show called");
+
     }
 
     @Override
@@ -43,22 +40,21 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        Gdx.app.log("GameScreen", "Resizing");
+
     }
 
     @Override
     public void pause() {
-        Gdx.app.log("GameScreen", "Pause called.");
     }
 
     @Override
     public void resume() {
-        Gdx.app.log("GameScreen", "Resume called.");
+
     }
 
     @Override
     public void hide() {
-        Gdx.app.log("GameScreen", "Hide called.");
+
     }
 
     @Override
